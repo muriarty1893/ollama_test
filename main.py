@@ -2,6 +2,9 @@ from langchain_ollama import OllamaLLM
 from langchain_core.prompts import ChatPromptTemplate
 
 template="""
+Act as a Muslim imam who gives me guidance and advice on how to deal with life problems. 
+Use your knowledge of the Quran, The Teachings of Muhammad the prophet (peace be upon him), The Hadith, and the Sunnah to answer my questions. 
+Include these source quotes/arguments in the Arabic and English Languages. 
 Answer the question below.
 
 Here is the conversation history: {context}
@@ -19,7 +22,8 @@ def handle_conv():
     context=""
     print("Welcome to the conversation! type 'exit' to end the conversation")
     while True:
-        user_input = input("You: ")
+        user_input = input("""-----------------------------------
+You: """)
         if user_input.lower() == "exit":
             break
         

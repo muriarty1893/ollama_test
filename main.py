@@ -14,9 +14,9 @@ Question: {question}
 Answer:
 """
 
-model = OllamaLLM(model = "llama3.2:latest")
+desiredModel = OllamaLLM(desiredModel = "llama3.2:latest")
 prompt = ChatPromptTemplate.from_template(template)
-chain = prompt | model
+chain = prompt | desiredModel
 
 def handle_conv():
     context=""

@@ -1,7 +1,7 @@
 import ollama
 
 desiredModel='llama3.2:latest'
-questionToAsk='What is thebest strat to learn coding ?'
+questionToAsk='write a poem in the style of bukowski about hating flies'
 
 response = ollama.chat(model=desiredModel, messages=[
     {

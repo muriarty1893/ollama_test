@@ -14,7 +14,7 @@ Question: {question}
 Answer:
 """
 
-desiredModel = OllamaLLM(desiredModel = "llama3.2:latest")
+desiredModel = OllamaLLM(model = "llama3.2:latest")
 prompt = ChatPromptTemplate.from_template(template)
 chain = prompt | desiredModel
 
@@ -24,7 +24,7 @@ def handle_conv():
     while True:
         user_input = input("""-----------------------------------
 You: """)
-        if user_input.lower() == "exit":
+        if user_input.lower() == "exit" or user_input.lower() == "q":
             break
         
         result = chain.invoke({"context":context,"question":user_input})

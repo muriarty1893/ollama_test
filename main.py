@@ -1,7 +1,8 @@
 from langchain_ollama import OllamaLLM
 from langchain_core.prompts import ChatPromptTemplate
+from datetime import datetime  # Tarih ve saat eklemek için
 
-template="""
+template = """
 Act as a Muslim imam who gives me guidance and advice on how to deal with life problems. 
 Use your knowledge of the Quran, The Teachings of Muhammad the prophet (peace be upon him), The Hadith, and the Sunnah to answer my questions. 
 Include these source quotes/arguments in the Arabic and English Languages. 
@@ -14,22 +15,35 @@ Question: {question}
 Answer:
 """
 
-desiredModel = OllamaLLM(model = "llama3.2:latest")
+desiredModel = OllamaLLM(model="llama3.2:latest")
 prompt = ChatPromptTemplate.from_template(template)
 chain = prompt | desiredModel
 
 def handle_conv():
-    context=""
-    print("Welcome to the conversation! type 'exit' to end the conversation")
-    while True:
-        user_input = input("""-----------------------------------
+    context = ""
+    print("Welcome to the conversation! Type 'exit' to end the conversation")
+
+    # Dosyayı aç (varsa üzerine yazar, yoksa yeni oluşturur)
+    with open("conversation_log.txt", "a") as log_file:
+        while True:
+            user_input = input("""-----------------------------------
 You: """)
-        if user_input.lower() == "exit" or user_input.lower() == "q":
-            break
-        
-        result = chain.invoke({"context":context,"question":user_input})
-        print("Bot: ",result)
-        context+= f"\nUser: {user_input}\nAI: {result}"
-    
+            if user_input.lower() == "exit" or user_input.lower() == "q":
+                break
+            
+            result = chain.invoke({"context": context, "question": user_input})
+            print("Bot: ", result)
+            
+            # Tarih ve saat bilgisi al
+            current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            
+            # Terminal çıktısını dosyaya kaydet (tarih ve saat ile birlikte)
+            log_file.write(f"Time: {current_time}\n")
+            log_file.write(f"User: {user_input}\n")
+            log_file.write(f"Bot: {result}\n\n")
+            
+            # Konuşma geçmişini güncelle
+            context += f"\nUser: {user_input}\nAI: {result}"
+
 if __name__ == "__main__":
     handle_conv()

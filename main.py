@@ -37,7 +37,7 @@ You: """)
             # Terminal çıktısını dosyaya kaydet (tarih ve saat ile birlikte)
             log_file.write(f"Time: {current_time}\n")
             log_file.write(f"User: {user_input}\n")
-            log_file.write(f"Bot: {result}\n\n")
+            log_file.write(f"Bot: {result}\n\n--------new-chat---------\n")
             
             # Konuşma geçmişini güncelle
             context += f"\nUser: {user_input}\nAI: {result}"

@@ -39,13 +39,10 @@ You: """)
             if user_input.lower() == "exit" or user_input.lower() == "q":
                 break
             
-
             start_time = time.time()
             
-
             result = chain.invoke({"pdf_content": pdf_content})
-            
-            # Zaman ölçümü biter
+
             end_time = time.time()
             response_time = end_time - start_time 
 

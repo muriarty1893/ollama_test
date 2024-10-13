@@ -6,7 +6,7 @@ import time
 
 def handle_conv():
     print("Welcome! We'll extract the PDF content and get job suggestions based on it. Type 'exit' or 'q' to end the conversation.")
-    pdf_path = "document.pdf" 
+    pdf_path = "data/document.pdf" 
     pdf_content = pdf_to_text(pdf_path)
     chain = create_prompt_chain()
 

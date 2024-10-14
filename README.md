@@ -18,13 +18,9 @@ To provide a platform for practice and group work, enabling team members to work
 ## Success Criteria
 "It is what it is." The project is driven by experimentation, learning, and team collaboration.
 
-## New Ideas
-- AI Resume ATS point evaluator
-- LLM user assistant
-- Personal training recommender
-
 ## Requirements
 - Install Git for version control.
+- Pull llama3.2:latest or llama3.2:3b
 
 ## Features
 The following features will be implemented:
